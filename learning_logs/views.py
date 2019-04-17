@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from .models import Topic
+from .forms import TopicForm
+from django.http import HttpResponseRedirect
+from django.shortcuts import reverse
 
 
 def index(request):
@@ -18,3 +21,13 @@ def topic(request, pk):
     context = {'topic': topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
 
+
+def new_topic(request):
+    if request.method != 'POST':
+        form = TopicForm()
+    else:
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('topics'))
+    context = {'form': form}
+    return render(request, 'learning_logs/new_topic.html', context)
