@@ -34,6 +34,7 @@ def new_topic(request):
     if request.method != 'POST':
         form = TopicForm()
     else:
+        form = TopicForm(data=request.POST)
         if form.is_valid():
 
             new_topic = form.save(commit=False)
