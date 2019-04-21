@@ -20,7 +20,7 @@ def topics(request):
 @login_required
 def topic(request, pk):
     topic = Topic.objects.get(id=pk)
-    
+
     if topic.owner != request.user:
         raise Http404
 
