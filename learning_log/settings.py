@@ -123,6 +123,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/users/login'
+LOGIN_REDIRECT_URL = '/topics'
 
 BOOTSTRAP3 = {
     'include_jquery': True,
