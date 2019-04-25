@@ -25,7 +25,7 @@ SECRET_KEY = '*@aq78-*z6_%tx8n@y7mii^%v8%i=jwv^oym*%f7h3fi^v!6l1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.35', '0.0.0.0']
 
 
 # Application definition
@@ -139,12 +139,12 @@ ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
 
 SITE_ID = 2
 
-ACCOUNT_LOGIN_URL = 'users:account_login'
+ACCOUNT_LOGIN_URL = 'account_login'
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = ACCOUNT_LOGIN_URL
 ACCOUNT_PASSWORD_RESET_REDIRECT_URL = ACCOUNT_LOGIN_URL
-ACCOUNT_EMAIL_CONFIRMATION_URL = "users:account_confirm_email"
-ACCOUNT_SETTINGS_REDIRECT_URL = 'users:account_settings'
-ACCOUNT_PASSWORD_CHANGE_REDIRECT_URL = "users:account_password"
+ACCOUNT_EMAIL_CONFIRMATION_URL = "account_confirm_email"
+ACCOUNT_SETTINGS_REDIRECT_URL = 'account_settings'
+ACCOUNT_PASSWORD_CHANGE_REDIRECT_URL = "account_settings"
 
 
 DEFAULT_FROM_EMAIL = 'support@yoursite.ru'
@@ -152,3 +152,12 @@ EMAIL_HOST = "smtp.yoursmtpserver.ru"
 EMAIL_PORT = 25
 EMAIL_HOST_USER = "user"
 EMAIL_HOST_PASSWORD = "pass"
+
+
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+def ACCOUNT_DELETION_MARK_CALLBACK(account_deletion):
+    from account.hooks import hookset
+    hookset.account_delete_expunge(account_deletion)
