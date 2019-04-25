@@ -1,4 +1,5 @@
-{% extends "account/base.html" %}
+{% extends 'learning_logs/base.html' %}
+
 
 {% load i18n %}
 {% load bootstrap3 %}
@@ -10,7 +11,7 @@
 {% block content %}
     <div class="row">
         <div class="col-md-5">
-            <form method="POST" action="{% url "account_settings" %}">
+            <form method="POST" action="{% url 'account_settings' %}">
                 <legend>{% trans "Account" %}</legend>
                 {% csrf_token %}
                 {% bootstrap_form form %}
@@ -18,4 +19,18 @@
             </form>
         </div>
     </div>
+
+    {% block subnav %}
+    <div class="row">
+        <div class="panel-heading"><strong>{% trans "Addittional Actions" %}</strong></div>
+        <div class="list-group">
+            <a class="list-group-item account-password" href="{% url 'account_password' %}">
+                {% trans "Change password" %}
+            </a>
+            <a class="list-group-item account-delete" href="{% url 'account_delete' %}">
+                {% trans "Delete account" %}
+            </a>
+        </div>
+    </div>
+    {% endblock %}
 {% endblock content %}
