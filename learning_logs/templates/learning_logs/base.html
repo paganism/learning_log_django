@@ -1,4 +1,5 @@
 {% load bootstrap3 %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,6 +15,9 @@
     </head>
 
         <body>
+
+            {% load i18n %}
+
             <nav class="navbar navbar-default navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
@@ -31,11 +35,11 @@
 
                         <ul class="nav navbar-nav navbar-right">
                             {% if user.is_authenticated %}
-                                <li><a>Hello, {{ user.username }}.</a></li>
-                                <li><a href="{% url 'logout' %}">logout</a></li>
+                                <li><a>{% trans "Hello" %}, {{ user.username }}.</a></li>
+                                <li><a href="{% url 'account_logout' %}">{% trans "logout" %}</a></li>
                             {% else %}
-                                <li><a href="{% url 'register' %}">Registration</a></li>
-                                <li><a href="{% url 'login' %}">Log In</a></li>
+                                <li><a href="{% url 'account_signup' %}">{% trans "Registration" %}</a></li>
+                                <li><a href="{% url 'account_login' %}">{% trans "Log In" %}</a></li>
                             {% endif %}
                         </ul>
                     </div><!--/.nav-collapse-->
@@ -49,6 +53,13 @@
                     {% block content %}{% endblock content %}
                 </div>
             </div><!--/container-->
+            
+            <div class="container">
+                <div>
+                    {% block footer_base %}{% endblock footer_base %}
+                </div>
+            </div><!--/container-->
+
 
         </body>
 </html>
