@@ -170,3 +170,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 def ACCOUNT_DELETION_MARK_CALLBACK(account_deletion):
     from account.hooks import hookset
     hookset.account_delete_expunge(account_deletion)
+
+
+AUTHENTICATION_BACKENDS = [
+    'account.auth_backends.EmailAuthenticationBackend',
+]
