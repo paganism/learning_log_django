@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'account',
     'django.contrib.sites',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -175,3 +176,11 @@ def ACCOUNT_DELETION_MARK_CALLBACK(account_deletion):
 AUTHENTICATION_BACKENDS = [
     'account.auth_backends.EmailAuthenticationBackend',
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
