@@ -12,7 +12,7 @@ from rest_framework import status, viewsets
 from django.contrib.auth.models import User
 from learning_logs.models import Topic, Entry
 
-from .serializers import TopicSerializer, UserSerializer
+from .serializers import TopicSerializer, UserSerializer, EntrySerializer
 
 from django.contrib.auth.models import User
 
@@ -66,3 +66,16 @@ class UserDetail(APIView):
     class UserViewSet(viewsets.ModelViewSet):
         queryset = User.objects.all()
         serializer_class = UserSerializer
+
+
+class Entries(APIView):
+
+    def get(self, request):
+        entries = Entry.objects.all()
+        serializer = EntrySerializer(
+            entries,
+            many=True,
+            context={'request': request}
+            )
+
+        return Response({'entries': serializer.data})

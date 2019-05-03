@@ -4,6 +4,7 @@ from learning_logs.models import Topic, Entry
 
 
 # Serializers define the API representation.
+
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -18,3 +19,12 @@ class TopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
         fields = ('id', 'text', 'date_added', 'owner')
+
+
+class EntrySerializer(serializers.ModelSerializer):
+
+    # topic_id = TopicSerializer()
+
+    class Meta:
+        model = Entry
+        fields = ('id', 'text', 'date_added', 'topic_id')
