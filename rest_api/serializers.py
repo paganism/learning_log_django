@@ -4,19 +4,17 @@ from learning_logs.models import Topic, Entry
 
 
 # Serializers define the API representation.
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('url', 'username', 'email', 'is_staff')
+        fields = ('id', 'username', 'email', 'is_staff')
 
 
-class TopicSerializer(serializers.HyperlinkedModelSerializer):
+class TopicSerializer(serializers.ModelSerializer):
 
-    # owner_id = UserSerializer()
-    owner = serializers.ReadOnlyField(source='owner.username')
+    owner = UserSerializer()
 
     class Meta:
         model = Topic
-
         fields = ('id', 'text', 'date_added', 'owner')
