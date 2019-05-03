@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'account',
     'django.contrib.sites',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -180,7 +181,13 @@ AUTHENTICATION_BACKENDS = [
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.BasicAuthentication'],
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
+    # ('rest_framework.permissions.AllowAny',),
+    'PAGINATE_BY': 10,
 }
+
+
+def some_api(request):
+    token = Token.objects.create(user=request.user)
+    return Response({'token': token.key})
