@@ -29,8 +29,6 @@ class TopicSerializer(serializers.ModelSerializer):
 
 class EntrySerializer(serializers.ModelSerializer):
 
-    # topic_id = TopicSerializer()
-
     class Meta:
         model = Entry
         fields = ('id', 'text', 'date_added', 'topic_id')
