@@ -30,7 +30,28 @@ class Topics(APIView):
         return Response({'topics': serializer.data})
 
 
+class Users(APIView):
+
+    def get_object(self):
+        try:
+            print(User.objects.all())
+            return User.objects.all()
+        except:
+            raise Http404
+
+    def get(self, request):
+        users = self.get_object()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
+
+    class UserViewSet(viewsets.ModelViewSet):
+        queryset = User.objects.all()
+        print(User.objects.all())
+        serializer_class = UserSerializer
+
+
 class UserDetail(APIView):
+
     def get_object(self, pk):
         try:
             return User.objects.get(pk=pk)
@@ -39,7 +60,7 @@ class UserDetail(APIView):
 
     def get(self, request, pk):
         snippet = self.get_object(pk)
-        serializer = UserSerializers(snippet)
+        serializer = UserSerializer(snippet)
         return Response(serializer.data)
 
     class UserViewSet(viewsets.ModelViewSet):
