@@ -24,7 +24,11 @@ def topic(request, pk):
     if topic.owner != request.user:
         raise Http404
 
-    entries = topic.entry_set.order_by('-date_added')
+    try:
+        entries = topic.entries.order_by('-date_added')
+    except:
+        entries = None
+    print("ENTRIES:     ", entries)
     context = {'topic': topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
 
