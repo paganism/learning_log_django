@@ -9,7 +9,7 @@ urlpatterns = [
     path('entries', Entries.as_view()),
     path('users', Users.as_view()),
     path('users/<int:pk>/', UserDetail.as_view(), name='user-detail'),
-    path('api-auth/', include('rest_framework.urls',
+    path('auth/', include('rest_framework.urls',
                               namespace='rest_framework')),
     path('auth-token/', views.obtain_auth_token, name='auth-token')
 ]
