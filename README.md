@@ -11,6 +11,8 @@ Learning Log helps you keep track of your learning for any topic you are learnin
 
 After that open your favourite browser and go to the localhost:5005
 
+Also this project has API
+
 # Project goals
 
 This code is written for educational purposes only
