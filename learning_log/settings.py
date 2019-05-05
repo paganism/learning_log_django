@@ -158,22 +158,15 @@ ACCOUNT_SETTINGS_REDIRECT_URL = 'account_settings'
 ACCOUNT_PASSWORD_CHANGE_REDIRECT_URL = "account_settings"
 
 
-# DEFAULT_FROM_EMAIL = 'support@yoursite.ru'
-# EMAIL_HOST = "smtp.yoursmtpserver.ru"
-# EMAIL_PORT = 25
-# EMAIL_HOST_USER = "user"
-# EMAIL_HOST_PASSWORD = "pass"
+DEFAULT_FROM_EMAIL = 'support@yoursite.ru'
+EMAIL_HOST = "smtp.yoursmtpserver.ru"
+EMAIL_PORT = 25
+EMAIL_HOST_USER = "user"
+EMAIL_HOST_PASSWORD = "pass"
 
 
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-
-DEFAULT_FROM_EMAIL = 'paganismrus@gmail.com'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'paganismrus@gmail.com'
-EMAIL_HOST_PASSWORD = "Heil88rus188"
 
 
 def ACCOUNT_DELETION_MARK_CALLBACK(account_deletion):
