@@ -31,11 +31,11 @@ class Topics(APIView):
 
     def post(self, request):
         topic_data = request.query_params
-        # do something with `topic_data`
-        print('DATA IS: ', topic_data, request.user)
-        p = Topic(text=topic_data['topic'])
-        p.owner = request.user
-        p.save()
+
+        new_topic = Topic(text=topic_data['topic'])
+        new_topic.owner = request.user
+        new_topic.save()
+
         return Response(data="return msg or data")
 
 
