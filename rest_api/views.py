@@ -29,6 +29,15 @@ class Topics(APIView):
 
         return Response({'topics': serializer.data})
 
+    def post(self, request):
+        topic_data = request.query_params
+        # do something with `topic_data`
+        print('DATA IS: ', topic_data, request.user)
+        p = Topic(text=topic_data['topic'])
+        p.owner = request.user
+        p.save()
+        return Response(data="return msg or data")
+
 
 class Users(APIView):
 
