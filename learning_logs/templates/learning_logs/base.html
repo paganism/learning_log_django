@@ -36,6 +36,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             {% if user.is_authenticated %}
                                 <li><a>{% trans "Hello" %}, {{ user.username }}.</a></li>
+                                <li><a href="{% url 'topics' %}">{% trans "My Topics" %}</a></li>
                                 <li><a href="{% url 'account_logout' %}">{% trans "logout" %}</a></li>
                             {% else %}
                                 <li><a href="{% url 'account_signup' %}">{% trans "Registration" %}</a></li>
