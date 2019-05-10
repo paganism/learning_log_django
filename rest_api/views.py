@@ -30,7 +30,8 @@ class Topics(APIView):
         return Response({'topics': serializer.data})
 
     def post(self, request):
-        topic_data = request.query_params
+
+        topic_data = request.data
 
         new_topic = Topic(text=topic_data['topic'])
         new_topic.owner = request.user
