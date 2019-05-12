@@ -14,7 +14,11 @@ from learning_logs.models import Topic, Entry
 
 from .serializers import TopicSerializer, UserSerializer, EntrySerializer
 
-from django.contrib.auth.models import User
+# API Swagger needs
+from rest_framework.decorators import api_view, permission_classes, renderer_classes
+from rest_framework.permissions import AllowAny
+from rest_framework_swagger.renderers import OpenAPIRenderer, SwaggerUIRenderer
+from rest_framework.schemas import SchemaGenerator
 
 
 class Topics(APIView):
@@ -89,3 +93,11 @@ class Entries(APIView):
             )
 
         return Response({'entries': serializer.data})
+
+
+@api_view()
+@permission_classes((AllowAny, ))
+@renderer_classes([OpenAPIRenderer, SwaggerUIRenderer])
+def schema_view(request):
+    generator = SchemaGenerator(title='Rest Swagger')
+    return Response(generator.get_schema(request=request))

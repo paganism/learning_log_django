@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -167,6 +168,9 @@ EMAIL_HOST_PASSWORD = "pass"
 
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+
 
 
 def ACCOUNT_DELETION_MARK_CALLBACK(account_deletion):

@@ -11,5 +11,6 @@ urlpatterns = [
     path('users/<int:pk>/', UserDetail.as_view(), name='user-detail'),
     path('auth/', include('rest_framework.urls',
                               namespace='rest_framework')),
-    path('auth-token/', views.obtain_auth_token, name='auth-token')
+    path('auth-token/', views.obtain_auth_token, name='auth-token'),
+    path('docs/', schema_view, name='schema_view'),
 ]
