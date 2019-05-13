@@ -12,6 +12,7 @@ Learning Log helps you keep track of your learning for any topic you are learnin
 After that open your favourite browser and go to the localhost:5005
 
 Also this project has API
+API description is accessible at /api/v1/docs/
 
 # Project goals
 
