@@ -48,7 +48,6 @@ class Users(APIView):
 
     def get_object(self):
         try:
-            print(User.objects.all())
             return User.objects.all()
         except:
             raise Http404
