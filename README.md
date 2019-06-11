@@ -7,7 +7,7 @@ Learning Log helps you keep track of your learning for any topic you are learnin
 (.venv) user@host:$ pip install -r requirements.txt
 (.venv) user@host:$ python3 manage.py runserver 5005
 ```
-5005 - free port on your host
+5005 - free port on your host. Also it may be any other free port.
 
 After that open your favourite browser and go to the localhost:5005
 
